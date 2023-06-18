@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                   http://www.springframework.org/schema/beans/spring-beans.xsd
                   http://www.springframework.org/schema/mvc
@@ -11,7 +11,7 @@
                   http://code.alibabatech.com/schema/dubbo
                   http://code.alibabatech.com/schema/dubbo/dubbo.xsd
                   http://www.springframework.org/schema/context
-                  http://www.springframework.org/schema/context/spring-context.xsd">
+                  http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
     <mvc:annotation-driven>
@@ -38,7 +38,7 @@
     <!-- 指定应用名称 -->
     <dubbo:application name="meinian_web" />
     <!--指定服务注册中心地址-->
-    <dubbo:registry address="zookeeper://117.62.207.10:2181"/>
+    <dubbo:registry protocol="zookeeper" address="117.62.207.10:2181"/>
     <!--批量扫描-->
     <!--<dubbo:annotation package="com.atguigu.controller" />-->
     <dubbo:annotation package="com.atguigu" />
@@ -56,6 +56,15 @@
         <property name="maxInMemorySize" value="4096" />
         <!-- 设定默认编码 -->
         <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <!--配置代理记录日志-->
+    <!--开启AspectJ注解支持-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <!--日志记录器-->
+    <bean id="myLogger" class="com.atguigu.log.MyLogger">
+        <property name="loggerName" value="controller"/>
+        <property name="fileName" value="E:/project/javaee/meinianlvyou_ouyi/meinianlvyou/meinian_parent/logs/controller.log"/>
     </bean>
 
     <!--包含扩展文件-->

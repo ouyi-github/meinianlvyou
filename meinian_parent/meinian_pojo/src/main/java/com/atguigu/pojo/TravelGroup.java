@@ -80,4 +80,18 @@ public class TravelGroup implements Serializable {
     public void setAttention(String attention) {
         this.attention = attention;
     }
+
+    @Override
+    public String toString() {
+        return "TravelGroup{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", helpCode='" + helpCode + '\'' +
+                ", sex='" + sex + '\'' +
+                ", remark='" + remark + '\'' +
+                ", attention='" + attention + '\'' +
+                ", travelItems=" + travelItems +
+                '}';
+    }
 }

@@ -16,3 +16,4 @@ meinian_maven_repository
 target
 .idea
 *.iml
+.lck

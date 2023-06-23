@@ -13,7 +13,7 @@
                          http://code.alibabatech.com/schema/dubbo/dubbo.xsd
                         http://www.springframework.org/schema/context
                          http://www.springframework.org/schema/context/spring-context.xsd">
-
+    <context:property-placeholder location="file:E:\project\javaee\meinianlvyou_ouyi\meinianlvyou\meinian_parent\config.properties"/>
     <!--Jedis连接池的相关配置-->
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxTotal">
@@ -27,8 +27,8 @@
     </bean>
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
         <constructor-arg name="poolConfig" ref="jedisPoolConfig" />
-        <constructor-arg name="host" value="117.62.207.10" />
-        <constructor-arg name="port" value="6379" type="int" />
+        <constructor-arg name="host" value="${redis_host}" />
+        <constructor-arg name="port" value="${redis_port}" type="int" />
         <constructor-arg name="timeout" value="30000" type="int" />
     </bean>
 </beans>

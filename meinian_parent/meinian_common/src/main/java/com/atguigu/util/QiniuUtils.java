@@ -15,15 +15,28 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * 七牛云工具类
  */
 public class QiniuUtils {
 
-    public  static String accessKey = "-TR4OX-N9Qw-fbINXLe0qlgb4R4vCR9TfIj1hIb0";
-    public  static String secretKey = "kegc1kvULjl-VleRudeHejJ4TRU9XTbVt25bFzHQ";
-    public  static String bucket = "meinian-ouyi";
+    public  static String accessKey;
+    public  static String secretKey;
+    public  static String bucket;
+
+    static {
+        try {
+            Properties properties = new Properties();
+            properties.load(new FileInputStream("E:\\project\\javaee\\meinianlvyou_ouyi\\meinianlvyou\\meinian_parent\\config.properties")); // 使用配置文件的绝对路径
+            accessKey = properties.getProperty("qiniu_accessKey");
+            secretKey = properties.getProperty("qiniu_secretKey");
+            bucket = properties.getProperty("qiniu_bucket");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void upload2Qiniu(String filePath,String fileName){
         //构造一个带指定Zone对象的配置类

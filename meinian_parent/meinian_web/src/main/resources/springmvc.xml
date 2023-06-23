@@ -34,11 +34,11 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-
+    <context:property-placeholder location="file:E:\project\javaee\meinianlvyou_ouyi\meinianlvyou\meinian_parent\config.properties"/>
     <!-- 指定应用名称 -->
     <dubbo:application name="meinian_web" />
     <!--指定服务注册中心地址-->
-    <dubbo:registry protocol="zookeeper" address="117.62.207.10:2181"/>
+    <dubbo:registry protocol="zookeeper" address="${zk_host}:${zk_port}"/>
     <!--批量扫描-->
     <!--<dubbo:annotation package="com.atguigu.controller" />-->
     <dubbo:annotation package="com.atguigu" />

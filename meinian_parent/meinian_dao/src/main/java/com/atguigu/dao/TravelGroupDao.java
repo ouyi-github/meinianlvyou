@@ -20,6 +20,7 @@ public interface TravelGroupDao {
 
     void edit(TravelGroup travelGroup);
 
+    // 根据跟团游id 删除跟团游自由行关联表中的数据
     void delete(Integer travelGroupId);
 
     List<TravelGroup> findAll();
@@ -29,4 +30,13 @@ public interface TravelGroupDao {
      * @return
      */
     List<TravelGroup> findTravelGroupById(Integer id);
+
+    // 根据跟团游id 查询跟团游自由行关联表中的数据记录数
+    Integer findCountBytravelGroupId(@Param("travelGroupId") Integer travelGroupId);
+
+    // 根据跟团游id 查询跟团游套餐游关联表中的数据记录数
+    Integer findCountBytravelGroupIdWithSetmeal(@Param("travelGroupId") Integer travelGroupId);
+
+    // 根据跟团游id，删除跟团游表数据
+    void deleteTravelGroupById(@Param("travelGroupId") Integer travelGroupId);
 }

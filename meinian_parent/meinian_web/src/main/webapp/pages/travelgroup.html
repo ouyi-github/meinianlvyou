@@ -327,6 +327,7 @@
                 resetForm() {
                     this.formData = {}
                     this.travelItemIds = []
+                    this.activeName = 'first'
                 },
                 // 弹出添加窗口
                 handleCreate() {
@@ -381,6 +382,34 @@
                 },
                 // 删除
                 handleDelete(row) {
+                    this.$confirm('确认删除跟团游吗？')
+                        .then(_ => {
+                            var that = this
+                            axios.post("/travelGroup/deleteByid.do?id="+row.id).then(function (response) {
+                                if (response.data.flag){
+                                    that.$message({
+                                        type: "success",
+                                        message: response.data.message
+                                    })
+                                    // 如果删除的是最后一页的最后一行数据，则当前页码需要切换为上一页
+                                    if (that.dataList.length === 1 && Math.ceil(that.pagination.total / that.pagination.pageSize) === that.pagination.currentPage) {
+                                        that.pagination.currentPage =   that.pagination.currentPage - 1
+                                    }
+                                    that.findPage()
+                                }else {
+                                    that.$message({
+                                        type: "error",
+                                        message: response.data.message
+                                    })
+                                }
+                            })
+                        })
+                        .catch(_ => {
+                            this.$message({
+                                type: 'info',
+                                message: '取消删除'
+                            })
+                        });
                 }
             }
         })

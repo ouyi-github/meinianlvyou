@@ -17,6 +17,8 @@ public class MessageConstant {
     public static final String ADD_TRAVELGROUP_FAIL = "新增报团游失败";
     public static final String ADD_TRAVELGROUP_SUCCESS = "新增报团游成功";
     public static final String DELETE_TRAVELGROUP_FAIL = "删除报团游失败";
+    public static final String DELETE_TRAVELGROUP_FAIL_WITH_TRAVELITEMS = "删除报团游失败，报团游中关联有自由行数据";
+    public static final String DELETE_TRAVELGROUP_FAIL_WITH_SETMEALS = "删除报团游失败，报团游中关联有套餐游数据";
     public static final String DELETE_TRAVELGROUP_SUCCESS = "删除报团游成功";
     public static final String QUERY_TRAVELGROUP_SUCCESS = "查询报团游成功";
     public static final String QUERY_TRAVELGROUP_FAIL = "查询报团游失败";
